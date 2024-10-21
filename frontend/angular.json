@@ -1,0 +1,172 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true  },  "@schematics/angular:class": {
+          "skipTests": true  },  "@schematics/angular:directive": {
+          "skipTests": true  },  "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/line-awesome/dist/font-awesome-line-awesome/css/all.min.css",
+              "node_modules/line-awesome/dist/line-awesome/css/line-awesome.min.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/famfamfam-flags/dist/sprite/famfamfam-flags.min.css",
+              "src/styles.scss",
+              {
+                "input": "node_modules/primeng/resources/themes/md-light-indigo/theme.css",
+                "bundleName": "md-light-indigo",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/md-light-deeppurple/theme.css",
+                "bundleName": "md-light-deeppurple",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/md-dark-indigo/theme.css",
+                "bundleName": "md-dark-indigo",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/md-dark-deeppurple/theme.css",
+                "bundleName": "md-dark-deeppurple",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/arya-green/theme.css",
+                "bundleName": "arya-green",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/arya-orange/theme.css",
+                "bundleName": "arya-orange",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/arya-purple/theme.css",
+                "bundleName": "arya-purple",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+                "bundleName": "lara-light-blue",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/bootstrap4-dark-purple/theme.css",
+                "bundleName": "bootstrap4-dark-purple",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/bootstrap4-light-purple/theme.css",
+                "bundleName": "bootstrap4-light-purple",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/saga-green/theme.css",
+                "bundleName": "saga-green",
+                "inject": false
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "frontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
