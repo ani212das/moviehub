@@ -1,8 +1,6 @@
 _**Movie Web Application**_
-
+-------------------------
 A full-stack movie management system developed using ASP.NET Core and Angular.
-
-**_Key Features_**
 
  **Backend (.NET Core)**
 -----------------------
