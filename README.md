@@ -1,37 +1,46 @@
-# Important
+_**Movie Web Application**_
+-------------------------
+A full-stack movie management system developed using ASP.NET Core and Angular.
 
-Issues of this repository are tracked on https://github.com/aspnetboilerplate/aspnetboilerplate. Please create your issues on https://github.com/aspnetboilerplate/aspnetboilerplate/issues.
+ **Backend (.NET Core)**
+-----------------------
+ ASP.NET Core Web API:
+ Provides RESTful API for frontend interaction.
+ Entity Framework Core:
+ Manages data persistence and database interactions.
+ JWT Authentication:
+ Secure login with role-based access control.
+ API Endpoints:
+ Supports CRUD operations for movie data (Create, Read, Update, Delete).
+ Includes filtering, searching, and pagination.
 
-# Introduction
+**Frontend (Angular)**
+---------------------
+CRUD Operations:
+Add, view, edit, and delete movie entries.
+Routing:
+Dynamic and static route handling.
+Lazy Loading:
+Load feature modules on demand to improve performance.
+RxJS & Observables:
+Reactive API calls and asynchronous data handling.
+Custom Directives & Pipes:
+Reusable components for enhanced UI/UX.
 
-This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
+**Material Design:**
+--------------------
+Built with Angular Primeng.
 
-1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
-2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
- 
-User Interface is based on [AdminLTE theme](https://github.com/ColorlibHQ/AdminLTE).
- 
-# Download
+**Technologies Used**
+--------------------
+Backend: ASP.NET Core, Entity Framework Core, SQL Server
+Frontend: Angular, TypeScript, RxJS, Angular Material
+Authentication: JWT (JSON Web Token)
+Database: SQL Server
 
-Create & download your project from https://aspnetboilerplate.com/Templates
-
-# Screenshots
-
-#### Sample Dashboard Page
-![](_screenshots/module-zero-core-template-ui-home.png)
-
-#### User Creation Modal
-![](_screenshots/module-zero-core-template-ui-user-create-modal.png)
-
-#### Login Page
-
-![](_screenshots/module-zero-core-template-ui-login.png)
-
-# Documentation
-
-* [ASP.NET Core MVC & jQuery version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core)
-* [ASP.NET Core & Angular  version.](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular)
-
-# License
-
-[MIT](LICENSE).
+**How to Set Up**
+----------------
+Clone the repository.
+Start the .NET Core API project to launch the backend.
+Navigate to the Angular project directory, run npm install, then ng serve to launch the frontend.
+Configure the API base URLs as required.
