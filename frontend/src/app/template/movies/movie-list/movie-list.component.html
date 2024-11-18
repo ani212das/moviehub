@@ -1,0 +1,256 @@
+<div class="whole-body">
+
+    <div class="card cus-card ">
+        <p-menubar [model]="items" [style]="{padding:'0px'}"
+            class="cus-menubar">
+            <ng-template pTemplate="start">
+                <img src="https://primefaces.org/cdn/primeng/images/primeng.svg"
+                    height="40" class="mr-2" />
+            </ng-template>
+            <ng-template pTemplate="end">
+                <input type="text" pInputText placeholder="Search"
+                    class="w-full custom-search" />
+            </ng-template>
+        </p-menubar>
+    </div>
+
+    <section class="whole-card">
+        <div class="row">
+            <div class="col-3 cus-devider">
+                <div class="card flex justify-content-center">
+                    <p-card header="M O R B I U S"
+                        subheader="The line between hero and villain will be broken"
+                        [style]="{ width: '370px' }">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/desktop-wallpaper-movieverse-2022-bollywood-hollywood-movies-in-dual-audio-hollywood-2022-movies-poster-thumbnail.jpg" />
+                        </ng-template>
+                        <p>
+                            <span>Release date: 1 April 2022 (USA)</span></p>
+                        <p><span>Director: Daniel Espinosa</span></p>
+                        <p><span>Distributed by: Sony Pictures
+                                Releasing</span></p>
+                        <p><span>Based on: Marvel Comics</span></p>
+
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details" (Click)="goToDetails()"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-3 cus-devider ">
+                <div class="card flex justify-content-center ">
+                    <p-card header="The Avengers"
+                        subheader="Avengers: Endgame is a 2019 superhero film"
+                        [style]="{ width: '370px'}">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/wp2398342.jpg" />
+                        </ng-template>
+                        <p> <span>Release date: 26 April 2019 (India)</span></p>
+                        <p><span>Directors: Anthony Russo, Joe Russo</span></p>
+                        <p><span>Distributed by: Walt Disney Studios
+                                Motion</span></p>
+                        <p><span>Adapted from: Avengers</span></p>
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-3 cus-devider">
+
+                <div class="card flex justify-content-center">
+                    <p-card header="Bhediya"
+                        subheader="Bhaskar is attacked by a wolf"
+                        [style]="{ width: '370px' }">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/25a380a1939efa6f94d9d7b1ec623ee8.jpg" />
+                        </ng-template>
+                        <p> <span>Initial release: 24 November 2022</span></p>
+                        <p><span>Director: Amar Kaushik</span></p>
+                        <p><span>Distributed by: Pen Studios</span></p>
+                        <p><span>Produced by: Dinesh Vijan; Jyoti
+                                Deshpande</span></p>
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="whole-card">
+        <div class="row">
+            <div class="col-3 cus-devider">
+                <div class="card flex justify-content-center">
+                    <p-card header="M O R B I U S"
+                        subheader="The line between hero and villain will be broken"
+                        [style]="{ width: '370px' }">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/desktop-wallpaper-movieverse-2022-bollywood-hollywood-movies-in-dual-audio-hollywood-2022-movies-poster-thumbnail.jpg" />
+                        </ng-template>
+                        <p>
+                            <span>Release date: 1 April 2022 (USA)</span></p>
+                        <p><span>Director: Daniel Espinosa</span></p>
+                        <p><span>Distributed by: Sony Pictures
+                                Releasing</span></p>
+                        <p><span>Based on: Marvel Comics</span></p>
+
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-3 cus-devider ">
+                <div class="card flex justify-content-center ">
+                    <p-card header="The Avengers"
+                        subheader="Avengers: Endgame is a 2019 superhero film"
+                        [style]="{ width: '370px'}">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/wp2398342.jpg" />
+                        </ng-template>
+                        <p> <span>Release date: 26 April 2019 (India)</span></p>
+                        <p><span>Directors: Anthony Russo, Joe Russo</span></p>
+                        <p><span>Distributed by: Walt Disney Studios
+                                Motion</span></p>
+                        <p><span>Adapted from: Avengers</span></p>
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-3 cus-devider">
+
+                <div class="card flex justify-content-center">
+                    <p-card header="Bhediya"
+                        subheader="Bhaskar is attacked by a wolf"
+                        [style]="{ width: '370px' }">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/25a380a1939efa6f94d9d7b1ec623ee8.jpg" />
+                        </ng-template>
+                        <p> <span>Initial release: 24 November 2022</span></p>
+                        <p><span>Director: Amar Kaushik</span></p>
+                        <p><span>Distributed by: Pen Studios</span></p>
+                        <p><span>Produced by: Dinesh Vijan; Jyoti
+                                Deshpande</span></p>
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="whole-card">
+        <div class="row">
+            <div class="col-3 cus-devider">
+                <div class="card flex justify-content-center">
+                    <p-card header="M O R B I U S"
+                        subheader="The line between hero and villain will be broken"
+                        [style]="{ width: '370px' }">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/desktop-wallpaper-movieverse-2022-bollywood-hollywood-movies-in-dual-audio-hollywood-2022-movies-poster-thumbnail.jpg" />
+                        </ng-template>
+                        <p>
+                            <span>Release date: 1 April 2022 (USA)</span></p>
+                        <p><span>Director: Daniel Espinosa</span></p>
+                        <p><span>Distributed by: Sony Pictures
+                                Releasing</span></p>
+                        <p><span>Based on: Marvel Comics</span></p>
+
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-3 cus-devider ">
+                <div class="card flex justify-content-center ">
+                    <p-card header="The Avengers"
+                        subheader="Avengers: Endgame is a 2019 superhero film"
+                        [style]="{ width: '370px'}">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/wp2398342.jpg" />
+                        </ng-template>
+                        <p> <span>Release date: 26 April 2019 (India)</span></p>
+                        <p><span>Directors: Anthony Russo, Joe Russo</span></p>
+                        <p><span>Distributed by: Walt Disney Studios
+                                Motion</span></p>
+                        <p><span>Adapted from: Avengers</span></p>
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details" 
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-3 cus-devider">
+
+                <div class="card flex justify-content-center">
+                    <p-card header="Bhediya"
+                        subheader="Bhaskar is attacked by a wolf"
+                        [style]="{ width: '370px' }">
+                        <ng-template pTemplate="header">
+                            <img alt="Card"
+                                src="../../../../assets/images/25a380a1939efa6f94d9d7b1ec623ee8.jpg" />
+                        </ng-template>
+                        <p> <span>Initial release: 24 November 2022</span></p>
+                        <p><span>Director: Amar Kaushik</span></p>
+                        <p><span>Distributed by: Pen Studios</span></p>
+                        <p><span>Produced by: Dinesh Vijan; Jyoti
+                                Deshpande</span></p>
+                        <ng-template pTemplate="footer">
+                            <p-button label="Details"
+                                icon="pi pi-file-import"></p-button>
+                            <p-button label="Watch" icon="pi pi-eye"
+                                styleClass="p-button-secondary"
+                                [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

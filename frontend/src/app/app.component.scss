@@ -1,0 +1,168 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff9800;
+}
+
+/* Hamburger menu styles (hidden on larger screens) */
+.hamburger {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #333;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+/*footer*/
+
+/* Footer styling */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.footer-section p {
+    font-size: 0.9em;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ff9800;
+}
+
+/* Social icons */
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-icons a img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.social-icons a img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer bottom */
+.footer-bottom {
+    background-color: #222;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+/* Responsive footer for smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}

@@ -3,6 +3,8 @@ using Abp.Zero.EntityFrameworkCore;
 using moviehub.Authorization.Roles;
 using moviehub.Authorization.Users;
 using moviehub.MultiTenancy;
+using Abp.Localization;
+using System;
 
 namespace moviehub.EntityFrameworkCore
 {
@@ -13,6 +15,16 @@ namespace moviehub.EntityFrameworkCore
         public moviehubDbContext(DbContextOptions<moviehubDbContext> options)
             : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationLanguageText>()
+                .Property(p => p.Value)
+                .HasMaxLength(100); // any integer that is smaller than 10485760
         }
     }
 }

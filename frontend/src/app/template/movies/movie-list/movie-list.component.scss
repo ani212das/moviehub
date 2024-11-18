@@ -1,0 +1,30 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.cus-menubar {
+    background-color: aqua;
+}
+.cus-card {
+    background-color: #8a98d4;
+    border: none;
+    width: 100%;
+}
+.whole-card {
+    margin-top: 55px;
+}
+.whole-body {
+    background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(https://images.unsplash.com/photo-1614030424754-24d0eebd46b2);
+}
+.cus-devider {
+    margin-right: 15px;
+    margin-left: 30px;
+}

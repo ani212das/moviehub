@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MovieComponent } from './template/movie/movie.component';
-import { MovieDetailsComponent } from './template/movie/movieDetails/movie-details/movie-details.component';
-import { MovieListComponent } from './template/movie/movie-list/movie-list.component';
 import { SharedModule } from './shared/shared/shared.module';
+import { MoviesModule } from './template/movies/movies.module';
 
 @NgModule({
-  declarations: [AppComponent, MovieComponent, MovieDetailsComponent, MovieListComponent],
+  declarations: [AppComponent],
   imports: [
     SharedModule,
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    MoviesModule
   ],
   providers: [
   ],
