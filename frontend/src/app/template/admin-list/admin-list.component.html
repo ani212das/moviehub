@@ -1,1 +1,104 @@
-<p>admin-list works!</p>
+<div class="whole-main-container">
+    <h2>User List (Total: {{ totalcount }})</h2>
+
+    <!-- < class="card flex justify-content-center"> -->
+    <div class="p-m-4 main-table-container">
+        <h2>Role Management</h2>
+
+        <!-- Create New Role Button -->
+        <div class="parent-create-container">
+            <div class="sub-create-container">
+                <button pButton type="button" label="Add Role"
+                    icon="pi pi-plus" (click)="closemodal()"></button>
+            </div>
+        </div>
+
+        <div *ngIf="isLoading" class="loading">
+            <div class="card">
+                <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" 
+        animationDuration=".5s"></p-progressSpinner>
+            </div>
+        </div>
+
+        <!-- Display error message -->
+    <div *ngIf="errorMessage" class="error">
+        <p>{{ errorMessage }}</p>
+    </div>
+
+        <!-- Roles Table -->
+        <p-table [value]="users" [formGroup]="adminForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading && users.length > 0"  [paginator]="true" [rows]="10"
+            [responsiveLayout]="'scroll'">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Display Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" *ngFor="let role of users">
+                <tr>
+                    <td>{{role.id}}</td>
+                    <td>{{ role.name }}</td>
+                    <td>{{ role.displayName }}</td>
+                    <td>{{ role.description }}</td>
+                    <!-- <td>{{role.actions}}</td> -->
+                    <td>
+                        <button pButton type="button" icon="pi pi-pencil"
+                            class="p-button-rounded p-button-info"
+                            ></button>  <!-- (click)="editRole(role)" -->                            
+                        <button pButton type="button" icon="pi pi-trash"
+                            class="p-button-rounded p-button-danger"
+                            ></button> <!-- (click)="deleteRole(role.id)" -->
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+          <!-- Display Messages -->
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <!-- Message if no users are available -->
+    <div *ngIf="!isLoading && users.length === 0" class="no-users">
+        <p>No users found.</p>
+    </div>
+
+        <!-- Dialog for Create/Edit Role -->
+        <p-dialog 
+            [(visible)]="roleDialog" *ngFor="let user Of users" [modal]="true" [closable]="false">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" pInputText
+                        formControlName = "name"  class="form-control"/>
+                </div>
+                <div class="p-field">
+                    <label for="displayName">Display Name</label>
+                    <input id="displayName" type="text" pInputText
+                    formControlName = "displayName"  class="form-control" />
+                </div>
+                <div class="p-field">
+                    <label for="description">Description</label>
+                    <textarea id="description" pInputTextarea
+                    formControlName = "description"  class="form-control"></textarea>
+                </div>
+            </div>
+            <p-footer>
+                <button pButton label="Cancel" icon="pi pi-times"
+                    class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton label="Save" icon="pi pi-check"
+                    ></button> <!-- (click)="saveRole()" -->
+                    
+            </p-footer>
+        </p-dialog>
+    </div>
+    <div class="card">
+
+    </div>
+</div>

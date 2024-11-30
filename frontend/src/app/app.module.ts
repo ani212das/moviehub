@@ -1,13 +1,27 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { AppRoutingModule } from './app-routing.module';
-import { AdminListComponent } from './template/admin-list/admin-list.component';
-import { UserListComponent } from './template/user-list/user-list.component';
+import { ListItemModule } from './template/list-item.module';
+import { MenubarModule } from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, AdminListComponent, UserListComponent],
+  declarations: [AppComponent],
   imports: [
-    AppRoutingModule
+    AppRoutingModule,
+    ListItemModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MenubarModule,
+    ButtonModule,
+    InputTextModule,
+    HttpClientModule
   ],
   providers: [
   ],

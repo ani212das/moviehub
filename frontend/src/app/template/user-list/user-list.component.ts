@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent {
-
+products: string [] = [];
 }

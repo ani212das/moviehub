@@ -1,3 +1,56 @@
-<h1>test again</h1>
-<router-outlet></router-outlet>
+<div class="card main-header-container">
+  <p-menubar>
+    <ng-template pTemplate="start">
+      <div class="pi pi-home cus-home">
+        <span>Home</span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class>
+        <ul class="cus-menu-list flex justify-content-space-evenly">
+          <li class="active"><input type="text" pInputText placeholder="Search"
+              class="w-full" /></li>
+          <li class="btn-lg active">
+            <a href="#" class="entry-point">Login</a>
+          </li>
+          <li class="active">Support</li>
+        </ul>
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>
 
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+  <div class="p-grid">
+    <div class="p-col-12 p-md-4">
+      <h4>About Us</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
+        eros velit.</p>
+    </div>
+    <div class="p-col-12 p-md-4">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="p-col-12 p-md-4">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="p-text-center" style="margin-top: 20px;">
+    <small>&copy; 2024 Your Company Name. All Rights Reserved.</small>
+  </div>
+</div>
