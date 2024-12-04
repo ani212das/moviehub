@@ -1,0 +1,12 @@
+<div class="layout-container">
+  <div class="sidebar">
+    <h1>Sidebar</h1>
+    <!-- PrimeNG Buttons for User and Role, stacked vertically -->
+    <p-button label="User" icon="pi pi-user" (click)="change(0)" class="vertical-button"  [rounded]="true" severity="success"></p-button>
+    <p-button label="Role" icon="pi pi-users" (click)="change(1)" class="vertical-button"  [rounded]="true" severity="success"></p-button>
+  </div>
+  <div class="content">
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
