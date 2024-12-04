@@ -1,0 +1,23 @@
+/* Style the sidebar container */
+.layout-container {
+  display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+  display: flex;
+  flex-direction: column;  /* Align buttons vertically */
+  justify-content: flex-start;
+  gap: 10px;  /* Optional: Space between buttons */
+  width: 200px;  /* Adjust the width as needed */
+  padding: 10px;
+  background: linear-gradient(90deg, #e3ffe7, #d9e7ff); /* Gradient background */
+}
+
+/* Button specific styling (optional, for more control) */
+.vertical-button {
+  width: 100%;  /* Make buttons stretch full width */
+  padding: 10px;
+  background-color:rgb(68, 131, 28);
+  border-radius: 20px;
+}
