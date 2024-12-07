@@ -16,6 +16,7 @@ export interface adminResponse extends CommonModel{
   description: string,
   grantedPermissions: string[],
 }
+
 export interface getalldetails extends CommonModel{
     result: {
       totalCount: string,
@@ -24,4 +25,17 @@ export interface getalldetails extends CommonModel{
 }
 export interface adminDetais extends CommonModel {
   result: adminResponse;
+}
+export interface updateRole {
+  id: number;
+  name: string;
+  displayName: string;
+  normalizedName: string;
+  description: string;
+  grantedPermissions: string[]; // Array of granted permission strings
+  
+}
+
+export interface upDateResponse extends CommonModel {
+ result: adminResponse;
 }

@@ -61,3 +61,68 @@ a:hover {
 .footer .social-icons i:hover {
   color: #007ad9;
 }
+
+
+:host ::ng-deep .p-menubar {
+  // background: #f8f9fa; /* Light background for better contrast */
+  // box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  // border-radius: 6px; /* Smooth edges for a modern look */
+  padding: 1rem; /* Inner spacing */
+}
+
+:host ::ng-deep .p-menubar .p-component {
+  background: transparent; /* Transparent component area */
+  color: #343a40; /* Darker text color */
+  border: none; /* Remove borders */
+  padding: 0.5rem 1rem; /* Adjust padding for inner components */
+}
+
+:host ::ng-deep .cus-home {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem; /* Larger font size */
+  font-weight: bold; /* Emphasize the Home button */
+  color: #007bff; /* Primary theme color */
+}
+
+:host ::ng-deep .cus-menu-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem; /* Space between items */
+}
+
+:host ::ng-deep .cus-menu-list li {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .cus-menu-list li input[pInputText] {
+  border: 1px solid #ced4da; /* Border for input */
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%; /* Ensure input takes up full width */
+}
+
+:host ::ng-deep .cus-menu-list li a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: #007bff; /* Primary button color */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+:host ::ng-deep .cus-menu-list li a:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+:host ::ng-deep .cus-menu-list li.active {
+  font-weight: bold;
+  color: #6c757d; /* Neutral text color for active items */
+}
+
+:host ::ng-deep .cus-menu-list li.active:hover {
+  color: #495057; /* Slightly darker on hover */
+}

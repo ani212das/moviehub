@@ -1,104 +1,159 @@
 <div class="whole-main-container">
-    <h2>User List (Total: {{ totalcount }})</h2>
+  <h2>User List (Total: {{ totalcount }})</h2>
 
-    <!-- < class="card flex justify-content-center"> -->
-    <div class="p-m-4 main-table-container">
-        <h2>Role Management</h2>
+  <div class="p-m-4 main-table-container">
+    <h2>Role Management</h2>
+    <!-- Create New Role Button -->
+    <div class="parent-create-container">
+      <div class="sub-create-container">
+        <p-button type="button" label="Add Role" severity="secondary" icon="pi pi-plus" (click)="openModel()" />
+      </div>
+    </div>
+     <!-- Display loading message -->
+     <div *ngIf="isLoading" class="loading">
+      <div class="card flex justify-content-center">
+        <p-progressSpinner 
+            styleClass="w-4rem h-4rem" 
+            strokeWidth="8" 
+            fill="var(--surface-ground)" 
+            animationDuration=".5s" />
+    </div>
+  </div>
+    <!-- Roles Table -->
+    <p-table
+      [value]="users"
+      *ngIf="!isLoading && users.length > 0"
+      [paginator]="true"
+      [rows]="10"
+      [responsiveLayout]="'scroll'">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Display Name</th>
+          <th>Normalized Name</th>
+          <th>Description</th>
+          <th>Action</th>
 
-        <!-- Create New Role Button -->
-        <div class="parent-create-container">
-            <div class="sub-create-container">
-                <button pButton type="button" label="Add Role"
-                    icon="pi pi-plus" (click)="closemodal()"></button>
-            </div>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td>{{ data.id }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.displayName }}</td>
+          <td>{{data.normalizedName}}</td>
+          <td>{{ data.description }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-pencil"
+              class="p-button-info mr-3 ml-3" (click)="openModel()">edit</button>
+            <button pButton type="button" icon="pi pi-eye"
+              class="p-button-info mr-3 ml-3" (click)="fetchRoleDetails(data.id)">view</button>
+            <button pButton type="button" icon="pi pi-trash"
+              class="p-button-danger mr-3 ml-3" (click)="deleteRole(data.id)">trash</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+          <!-- for Role Details -->
+    <div class="card flex justify-content-end align-items-center ml-4">
+      <!-- <p-button (onClick)="showDialog()" label="Show" /> -->
+      <p-dialog 
+          header="Role Details" 
+          [(visible)]="showDetailModal" 
+          [modal]="true" 
+          [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
+          [style]="{ width: '50vw',border:'2px solid Blue'}" 
+          [draggable]="false" 
+          [resizable]="false">
+              <!-- for Role Details -->
+              <div *ngIf="roleDetails" class="ml-6">
+                <!-- <h3>Role Details</h3> -->
+                <p><strong>Name:</strong> {{ roleDetails.name }}</p>
+                <p><strong>Display Name:</strong> {{ roleDetails.displayName }}</p>
+                <p><strong>Normalized Name:</strong> {{ roleDetails.normalizedName }}</p>
+                <p><strong>Description:</strong> {{ roleDetails.description }}</p>
+              </div>
+      </p-dialog>
+  </div>
+    
+  <!-- for Update Role Management  -->
+  <p-dialog header="{{ isEditMode ? 'Edit Role' : 'Add Role' }}" [modal]="true" [(visible)]="showUpdateModal" [style]="{ width: '50vw' }">
+    <form [formGroup]="roleForm" (ngSubmit)="onUpdate()" >
+      <div class="p-field form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" pInputText formControlName="name" placeholder="Enter role name" />
+      </div>
+      <div class="p-field form-group">
+        <label for="displayName">Display Name</label>
+        <input id="displayName" type="text" pInputText formControlName="displayName" placeholder="Enter display name" />
+      </div>
+      <div class="p-field form-group">
+        <label for="normalizedName">Normalized Name</label>
+        <input id="normalizedName" type="text" pInputText formControlName="normalizedName" placeholder="Enter normalized name" />
+      </div>
+      <div class="p-field form-group">
+        <label for="description">Description</label>
+        <textarea id="description" pInputTextarea formControlName="description" placeholder="Enter description"></textarea>
+      </div>
+      <div class="p-d-flex p-jc-between">
+        <button pButton type="button" label="Cancel" class="p-button-text" (click)="closeModal()"></button>
+        <button pButton type="submit" label="Update"></button>
+      </div>
+    </form>
+  </p-dialog>  
+
+    <!-- Add Role Modal -->
+    <div class="card flex justify-content-center">
+      <p-dialog header="Add Role" [modal]="true" [(visible)]="showModal" [style]="{ width: '25rem' }">
+        <form [formGroup]="roleForm" (ngSubmit)="onSubmit()" class="ml-5">
+          <span class="p-text-secondary block mb-5">Update your information.</span>
+
+          <div class="flex align-items-center gap-3 mb-3 form-group">
+              <label for="Enter Your Name Here" class="font-semibold w-6rem">Name</label>
+              <input id="name" type="text" pInputText 
+              class="flex-auto" autocomplete="off" formControlName="name"
+              class="form-control" placeholder="Enter your name"/>
+              <small
+                *ngIf="roleForm.get('name')?.invalid && roleForm.get('name')?.touched">
+                 *Name is required.
+              </small>
+          </div>
+          <div class="flex align-items-center gap-3 mb-4 form-group">
+              <label for="email" class="font-semibold w-6rem">DisplayName</label>
+              <input id="displayName" type="text" pInputText 
+              class="flex-auto" autocomplete="off" formControlName="displayName"
+              class="form-control" placeholder="Enter role name"/>
+              <small
+                *ngIf="roleForm.get('displayName')?.invalid && roleForm.get('displayName')?.touched">
+                 *Role Name is required.
+              </small>
+          </div>
+
+          <div class="flex align-items-center gap-3 mb-4 form-group">
+            <label for="email" class="font-semibold w-6rem">normalizedName</label>
+            <input id="normalizedName" type="text" pInputText 
+            class="flex-auto" autocomplete="off" formControlName="normalizedName"
+            class="form-control" placeholder="Enter normalized Name"/>
+            <small
+              *ngIf="roleForm.get('normalizedName')?.invalid && roleForm.get('normalizedName')?.touched">
+               *normalized Name is required.
+            </small>
         </div>
 
-        <div *ngIf="isLoading" class="loading">
-            <div class="card">
-                <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" 
-        animationDuration=".5s"></p-progressSpinner>
-            </div>
+          <div class="flex align-items-center gap-3 mb-5 form-group">
+            <label for="description" class="font-semibold w-6rem">Description</label>
+            <textarea id="description" pInputTextarea formControlName="description"
+            class="form-control" placeholder="Enter description"></textarea>
         </div>
-
-        <!-- Display error message -->
-    <div *ngIf="errorMessage" class="error">
-        <p>{{ errorMessage }}</p>
-    </div>
-
-        <!-- Roles Table -->
-        <p-table [value]="users" [formGroup]="adminForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading && users.length > 0"  [paginator]="true" [rows]="10"
-            [responsiveLayout]="'scroll'">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Display Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" *ngFor="let role of users">
-                <tr>
-                    <td>{{role.id}}</td>
-                    <td>{{ role.name }}</td>
-                    <td>{{ role.displayName }}</td>
-                    <td>{{ role.description }}</td>
-                    <!-- <td>{{role.actions}}</td> -->
-                    <td>
-                        <button pButton type="button" icon="pi pi-pencil"
-                            class="p-button-rounded p-button-info"
-                            ></button>  <!-- (click)="editRole(role)" -->                            
-                        <button pButton type="button" icon="pi pi-trash"
-                            class="p-button-rounded p-button-danger"
-                            ></button> <!-- (click)="deleteRole(role.id)" -->
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-
-          <!-- Display Messages -->
-    <div *ngIf="successMessage" class="alert alert-success">
-        {{ successMessage }}
-    </div>
-    <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-    </div>
-
-    <!-- Message if no users are available -->
-    <div *ngIf="!isLoading && users.length === 0" class="no-users">
-        <p>No users found.</p>
-    </div>
-
-        <!-- Dialog for Create/Edit Role -->
-        <p-dialog 
-            [(visible)]="roleDialog" *ngFor="let user Of users" [modal]="true" [closable]="false">
-            <div class="p-fluid">
-                <div class="p-field">
-                    <label for="name">Name</label>
-                    <input id="name" type="text" pInputText
-                        formControlName = "name"  class="form-control"/>
-                </div>
-                <div class="p-field">
-                    <label for="displayName">Display Name</label>
-                    <input id="displayName" type="text" pInputText
-                    formControlName = "displayName"  class="form-control" />
-                </div>
-                <div class="p-field">
-                    <label for="description">Description</label>
-                    <textarea id="description" pInputTextarea
-                    formControlName = "description"  class="form-control"></textarea>
-                </div>
-            </div>
-            <p-footer>
-                <button pButton label="Cancel" icon="pi pi-times"
-                    class="p-button-text" (click)="hideDialog()"></button>
-                <button pButton label="Save" icon="pi pi-check"
-                    ></button> <!-- (click)="saveRole()" -->
-                    
-            </p-footer>
-        </p-dialog>
-    </div>
-    <div class="card">
-
-    </div>
+        
+          <div class="flex justify-content-center gap-2 mb-3">
+              <p-button label="Cancel" severity="secondary" (click)="closeModal()" />
+              <p-button label="Save" type="submit" />
+          </div>
+        </form>
+      </p-dialog>
+  </div>
+  </div>
 </div>
