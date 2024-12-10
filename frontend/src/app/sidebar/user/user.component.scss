@@ -1,0 +1,90 @@
+/* General Styles */
+.header-title {
+  text-align: center; /* Center the text */
+  font-size: 36px; /* Make the font size larger */
+  font-weight: bold; /* Make the text bold */
+  color: #4caf50; /* Use a pleasant green color */
+  margin-bottom: 20px; /* Add some space below the title */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  letter-spacing: 1px; /* Increase the spacing between letters */
+  padding: 10px; /* Add padding around the text */
+  background: linear-gradient(90deg, #e3ffe7, #d9e7ff); /* Gradient background */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight box shadow */
+}
+
+
+.action-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+.action-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem; /* Optional for spacing */
+}
+.add-user-button {
+  padding: 10px 15px;
+}
+
+.user-table {
+  margin: 20px auto;
+  width: 95%;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-edit {
+  margin-right: 10px;
+}
+
+.modal-container {
+  padding: 20px;
+}
+
+.form-container {
+  margin-top: 10px;
+}
+
+.p-field {
+  margin-bottom: 15px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.submit-button {
+  background-color: #4caf50;
+}
+
+.cancel-button {
+  background-color: #f44336;
+}
+
+.action-table{
+  margin: 20px;
+}
+
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between input and button */
+}
+
+.search-input {
+  width: 250px;
+}
+
+.search-button {
+  height: 34px; /* Match the height of the input field */
+}
