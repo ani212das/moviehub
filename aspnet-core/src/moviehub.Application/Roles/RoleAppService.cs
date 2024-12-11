@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace moviehub.Roles
 {
-    [AbpAuthorize(PermissionNames.Pages_Roles)]
+    //[AbpAuthorize(PermissionNames.Pages_Roles)]
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedRoleResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
         private readonly RoleManager _roleManager;
@@ -72,12 +72,12 @@ namespace moviehub.Roles
 
             CheckErrors(await _roleManager.UpdateAsync(role));
 
-            var grantedPermissions = PermissionManager
-                .GetAllPermissions()
-                .Where(p => input.GrantedPermissions.Contains(p.Name))
-                .ToList();
+            //var grantedPermissions = PermissionManager
+            //    .GetAllPermissions()
+            //    .Where(p => input.GrantedPermissions.Contains(p.Name))
+            //    .ToList();
 
-            await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
+            //await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
 
             return MapToEntityDto(role);
         }

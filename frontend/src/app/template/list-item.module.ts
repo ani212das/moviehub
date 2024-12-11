@@ -13,10 +13,10 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
-
-
+import { RoleListComponent } from './role-list/role-list.component';
+import { TabViewModule } from 'primeng/tabview';
 @NgModule({
-  declarations: [UserListComponent, AdminListComponent],
+  declarations: [UserListComponent, AdminListComponent, RoleListComponent],
   imports: [
     CommonModule,
     ListItemRoutingModule,
@@ -28,7 +28,8 @@ import { ToastModule } from 'primeng/toast';
     ProgressSpinnerModule,
     ReactiveFormsModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    TabViewModule,
   ]
 })
 export class ListItemModule { }

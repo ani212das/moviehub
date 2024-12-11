@@ -1,0 +1,116 @@
+<div class="create_role surface-card shadow-2 border-round-md p-3">
+    <div class="flex flex-wrap align-items-center justify-content-end">
+        <button class="btn btn-md btn-primary mb-3" pButton icon="pi pi-plus" label="Create Role"
+            (click)="OpenCreateEditRoleDialog()"></button>
+    </div>
+
+    <!-- Show all role details -->
+    <div class="user_table">
+        <p-table [value]="Rolesdata" (onLazyLoad)="loadRoles($event)" dataKey="id"
+            [tableStyle]="{ 'min-width': '75rem' }" [lazy]="true" [paginator]="true" [rows]="1"
+            [totalRecords]="totalCount" [loading]="loading" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="surface-50 capitalize">Name</th>
+                    <th class="surface-50 capitalize">displayName</th>
+                    <th class="surface-50 capitalize">normalizedName</th>
+                    <th class="surface-50 capitalize">description</th>
+                    <th class="surface-50 capitalize">Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.displayName }}</td>
+                    <td>{{ data.normalizedName }}</td>
+                    <td>{{ data.description }}</td>
+                    <td width="150px">
+                        <div class="d-flex justify-content-start align-items-center gap-2">
+                            <button 
+                                class="btn btn-sm btn-primary d-flex" 
+                                pButton 
+                                icon="pi pi-pencil" 
+                                (click)="openUpdateUi(data)">
+                                <span class="px-2">Update</span>
+                            </button>
+                            <button
+                                class="btn btn-sm btn-danger d-flex" 
+                                pButton 
+                                icon="pi pi-trash" 
+                                (click)="deleteRoleByid(data.id)">
+                                <span class="px-2">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                    
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<!--Create Roles Modal-->
+<p-dialog [header]="titleModel" [(visible)]="showCreateEditRole" [breakpoints]="{ '960px': '85vw' }"
+    [style]="{ width: '40vw' }" [modal]="true" [draggable]="false" [resizable]="false">
+    <div class="card">
+        <form [formGroup]="form">
+            <p-tabView>
+                <p-tabPanel [header]="'Roles'">
+                    <div class="grid pr-3">
+                        <div class="col-12 md:col-12 lg:col-6 mb-2">
+                            <div class="flex flex-column">
+                                <label class="mb-1 capitalize" for="">Name<span class="text-red-500">*</span></label>
+                                <input type="text" pInputText formControlName="name" />
+                                <span class="text-red-400" *ngIf="
+                    form.controls['name'].hasError('required') &&
+                    form.controls['name'].touched
+                  ">
+                                    {{ "nameIsRequired" }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-12 lg:col-6 mb-2">
+                            <div class="flex flex-column">
+                                <label class="mb-1 capitalize" for="">{{ "display Name"
+                                    }}<span class="text-red-500">*</span></label>
+                                <input type="text" pInputText formControlName="displayName" />
+                                <span class="text-red-400" *ngIf="
+                    form.controls['displayName'].hasError('required') &&
+                    form.controls['displayName'].touched
+                  ">
+                                    {{ "displayNameIsRequired" }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-12 lg:col-6 mb-2">
+                            <div class="flex flex-column">
+                                <label class="mb-1 capitalize" for="">{{ "Normalized Name"
+                                    }}<span class="text-red-500">*</span></label>
+                                <input type="text" pInputText formControlName="normalizedName" />
+                                <span class="text-red-400" *ngIf="
+                    form.controls['normalizedName'].hasError('required') &&
+                    form.controls['normalizedName'].touched
+                  ">
+                                    {{ "normalizedNameIsRequired" }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-12 lg:col-6 mb-2">
+                            <div class="flex flex-column">
+                                <label class="mb-1 capitalize" for="">description</label>
+                                <input type="text" pInputText formControlName="description" />
+                            </div>
+                        </div>
+                    </div>
+                </p-tabPanel>
+            </p-tabView>
+            <div class="flex justify-content-end gap-3 mt-3">
+                <button class="p-button-outlined hover:text-white hover:bg-primary-600" pButton label="Cancel"
+                    (click)="cancel()"></button>
+                <button class="" pButton [label]="submitbuttontitle" type="submit" (click)="createEditRole()"></button>
+            </div>
+        </form>
+    </div>
+</p-dialog>
+
+<p-toast></p-toast>
